@@ -42,7 +42,7 @@ namespace MegaDesk_3_JeaninaLao
         {
             if (char.IsControl(e.KeyChar))
             {
-                numericUpDown2.Value = 12;
+                numericDepthBox.Value = 12;
             }
 
             else if (char.IsDigit(e.KeyChar))
