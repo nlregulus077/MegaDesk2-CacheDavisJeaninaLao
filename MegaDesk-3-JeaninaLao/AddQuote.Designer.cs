@@ -70,6 +70,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(397, 167);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            96,
+            0,
+            0,
+            0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
             24,
             0,
@@ -87,6 +92,11 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(397, 210);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            48,
+            0,
+            0,
+            0});
             this.numericUpDown2.Minimum = new decimal(new int[] {
             12,
             0,
