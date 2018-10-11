@@ -35,20 +35,25 @@
             this.numericDepthBox = new System.Windows.Forms.NumericUpDown();
             this.deskBox = new System.Windows.Forms.GroupBox();
             this.optionsBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.deskNumerLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.drawerNumberBox = new System.Windows.Forms.NumericUpDown();
             this.customerLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.titleLabelAddQuote = new System.Windows.Forms.Label();
             this.btnGetQuote = new System.Windows.Forms.Button();
+            this.materialBox = new System.Windows.Forms.ComboBox();
+            this.rushBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.quoteBox = new System.Windows.Forms.GroupBox();
+            this.quoteLabel = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericWidthBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDepthBox)).BeginInit();
             this.deskBox.SuspendLayout();
             this.optionsBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawerNumberBox)).BeginInit();
+            this.quoteBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -64,26 +69,26 @@
             // widthLabel
             // 
             this.widthLabel.AutoSize = true;
-            this.widthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widthLabel.Location = new System.Drawing.Point(18, 30);
+            this.widthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.widthLabel.Location = new System.Drawing.Point(20, 37);
             this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(121, 18);
+            this.widthLabel.Size = new System.Drawing.Size(100, 15);
             this.widthLabel.TabIndex = 4;
             this.widthLabel.Text = "Enter desk width:";
             // 
             // depthLabel
             // 
             this.depthLabel.AutoSize = true;
-            this.depthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depthLabel.Location = new System.Drawing.Point(16, 73);
+            this.depthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.depthLabel.Location = new System.Drawing.Point(18, 73);
             this.depthLabel.Name = "depthLabel";
-            this.depthLabel.Size = new System.Drawing.Size(123, 18);
+            this.depthLabel.Size = new System.Drawing.Size(102, 15);
             this.depthLabel.TabIndex = 5;
             this.depthLabel.Text = "Enter desk depth:";
             // 
             // numericWidthBox
             // 
-            this.numericWidthBox.Location = new System.Drawing.Point(145, 32);
+            this.numericWidthBox.Location = new System.Drawing.Point(143, 37);
             this.numericWidthBox.Maximum = new decimal(new int[] {
             96,
             0,
@@ -105,7 +110,7 @@
             // 
             // numericDepthBox
             // 
-            this.numericDepthBox.Location = new System.Drawing.Point(145, 75);
+            this.numericDepthBox.Location = new System.Drawing.Point(143, 73);
             this.numericDepthBox.Maximum = new decimal(new int[] {
             48,
             0,
@@ -124,7 +129,6 @@
             0,
             0,
             0});
-            this.numericDepthBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDown2_KeyPress);
             // 
             // deskBox
             // 
@@ -142,76 +146,51 @@
             // optionsBox
             // 
             this.optionsBox.Controls.Add(this.label1);
-            this.optionsBox.Controls.Add(this.numericUpDown1);
+            this.optionsBox.Controls.Add(this.rushBox);
+            this.optionsBox.Controls.Add(this.materialBox);
+            this.optionsBox.Controls.Add(this.deskNumerLabel);
             this.optionsBox.Controls.Add(this.label2);
-            this.optionsBox.Controls.Add(this.numericUpDown2);
+            this.optionsBox.Controls.Add(this.drawerNumberBox);
             this.optionsBox.Location = new System.Drawing.Point(375, 96);
             this.optionsBox.Name = "optionsBox";
-            this.optionsBox.Size = new System.Drawing.Size(268, 131);
+            this.optionsBox.Size = new System.Drawing.Size(278, 170);
             this.optionsBox.TabIndex = 9;
             this.optionsBox.TabStop = false;
             this.optionsBox.Text = "Order Options";
             // 
-            // label1
+            // deskNumerLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 18);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Enter desk width:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(145, 75);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            48,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(78, 20);
-            this.numericUpDown1.TabIndex = 7;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
+            this.deskNumerLabel.AutoSize = true;
+            this.deskNumerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deskNumerLabel.Location = new System.Drawing.Point(18, 32);
+            this.deskNumerLabel.Name = "deskNumerLabel";
+            this.deskNumerLabel.Size = new System.Drawing.Size(117, 15);
+            this.deskNumerLabel.TabIndex = 4;
+            this.deskNumerLabel.Text = "Number of Drawers:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 73);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 18);
+            this.label2.Size = new System.Drawing.Size(100, 15);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Enter desk depth:";
+            this.label2.Text = "Surface Material:";
             // 
-            // numericUpDown2
+            // drawerNumberBox
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(145, 32);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            96,
+            this.drawerNumberBox.Location = new System.Drawing.Point(141, 32);
+            this.drawerNumberBox.Maximum = new decimal(new int[] {
+            7,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(78, 20);
-            this.numericUpDown2.TabIndex = 6;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            24,
+            this.drawerNumberBox.Name = "drawerNumberBox";
+            this.drawerNumberBox.Size = new System.Drawing.Size(37, 20);
+            this.drawerNumberBox.TabIndex = 6;
+            this.drawerNumberBox.Value = new decimal(new int[] {
+            7,
             0,
             0,
             0});
@@ -252,11 +231,66 @@
             this.btnGetQuote.Text = "Get Quote";
             this.btnGetQuote.UseVisualStyleBackColor = true;
             // 
+            // materialBox
+            // 
+            this.materialBox.FormattingEnabled = true;
+            this.materialBox.Location = new System.Drawing.Point(141, 72);
+            this.materialBox.Name = "materialBox";
+            this.materialBox.Size = new System.Drawing.Size(121, 21);
+            this.materialBox.TabIndex = 7;
+            // 
+            // rushBox
+            // 
+            this.rushBox.FormattingEnabled = true;
+            this.rushBox.Location = new System.Drawing.Point(141, 116);
+            this.rushBox.Name = "rushBox";
+            this.rushBox.Size = new System.Drawing.Size(121, 21);
+            this.rushBox.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Rush Order Options:";
+            // 
+            // quoteBox
+            // 
+            this.quoteBox.Controls.Add(this.textBox2);
+            this.quoteBox.Controls.Add(this.quoteLabel);
+            this.quoteBox.Location = new System.Drawing.Point(70, 293);
+            this.quoteBox.Name = "quoteBox";
+            this.quoteBox.Size = new System.Drawing.Size(573, 64);
+            this.quoteBox.TabIndex = 14;
+            this.quoteBox.TabStop = false;
+            this.quoteBox.Text = "Quote";
+            // 
+            // quoteLabel
+            // 
+            this.quoteLabel.AutoSize = true;
+            this.quoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quoteLabel.Location = new System.Drawing.Point(167, 26);
+            this.quoteLabel.Name = "quoteLabel";
+            this.quoteLabel.Size = new System.Drawing.Size(73, 15);
+            this.quoteLabel.TabIndex = 11;
+            this.quoteLabel.Text = "Final Quote:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(246, 25);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(204, 20);
+            this.textBox2.TabIndex = 12;
+            // 
             // AddQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
+            this.Controls.Add(this.quoteBox);
             this.Controls.Add(this.btnGetQuote);
             this.Controls.Add(this.titleLabelAddQuote);
             this.Controls.Add(this.textBox1);
@@ -273,8 +307,9 @@
             this.deskBox.PerformLayout();
             this.optionsBox.ResumeLayout(false);
             this.optionsBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawerNumberBox)).EndInit();
+            this.quoteBox.ResumeLayout(false);
+            this.quoteBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,13 +324,18 @@
         private System.Windows.Forms.NumericUpDown numericDepthBox;
         private System.Windows.Forms.GroupBox deskBox;
         private System.Windows.Forms.GroupBox optionsBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label deskNumerLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown drawerNumberBox;
         private System.Windows.Forms.Label customerLabel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label titleLabelAddQuote;
         private System.Windows.Forms.Button btnGetQuote;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox rushBox;
+        private System.Windows.Forms.ComboBox materialBox;
+        private System.Windows.Forms.GroupBox quoteBox;
+        private System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.Label quoteLabel;
     }
 }

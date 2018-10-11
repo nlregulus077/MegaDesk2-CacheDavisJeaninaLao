@@ -2,17 +2,23 @@
 {
     class Desk
     {
-        private double length;
-        private double width;
-        private double height;
-        private int numberOfDrawers;
-        private string material;
 
-        public double calcSurfaceArea (double length, double width, double height)
+        public int Width { get; set; }
+
+        public int Depth { get; set; }
+
+        public int NumberOfDrawers { get; set; }
+
+        public enum SurfaceMaterial
         {
-            // Stub function
-            return 0.0;
+            Laminate,
+            Oak,
+            Rosewood,
+            Veneer,
+            Pine
         }
+
+        public SurfaceMaterial DeskMaterial { get; set; }
 
     }
 }

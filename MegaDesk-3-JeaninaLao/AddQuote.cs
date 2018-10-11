@@ -40,15 +40,7 @@ namespace MegaDesk_3_JeaninaLao
 
         private void numericUpDown2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsControl(e.KeyChar))
-            {
-                numericDepthBox.Value = 12;
-            }
 
-            else if (char.IsDigit(e.KeyChar))
-            {
-
-            }
         }
     }
 }
