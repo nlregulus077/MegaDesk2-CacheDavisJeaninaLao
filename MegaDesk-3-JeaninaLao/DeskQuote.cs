@@ -1,4 +1,6 @@
-﻿namespace MegaDesk_3_JeaninaLao
+﻿using System.Collections.Generic;
+
+namespace MegaDesk_3_JeaninaLao
 {
     class DeskQuote
     {
@@ -22,28 +24,22 @@
         const decimal sevenDayPrice2 = 35.00M;
         const decimal sevenDayPrice3 = 40.00M;
 
+
         public enum RushOrderDelivery
         {
-            ThreeDay,
-            FiveDay,
-            SevenDay,
-            NormalShipping
-
-        }
-
-        public void getMaterialRate (string material)
-        {
-
-        }
-
-        public void getRushOrderRate (int days, double surfaceArea)
-        {
+            ThreeDay = 3,
+            FiveDay = 5,
+            SevenDay = 7,
+            NormalShipping = 14
 
         }
 
         public void calcQuote()
         {
+            // find surface area of desk
+            int surfaceArea = desk.Depth * desk.Width;
 
+            // get number of drawers
         }
     }
 }

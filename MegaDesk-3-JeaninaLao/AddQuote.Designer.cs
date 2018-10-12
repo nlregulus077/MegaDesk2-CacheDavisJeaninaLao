@@ -35,6 +35,9 @@
             this.numericDepthBox = new System.Windows.Forms.NumericUpDown();
             this.deskBox = new System.Windows.Forms.GroupBox();
             this.optionsBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rushBox = new System.Windows.Forms.ComboBox();
+            this.materialBox = new System.Windows.Forms.ComboBox();
             this.deskNumerLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.drawerNumberBox = new System.Windows.Forms.NumericUpDown();
@@ -42,12 +45,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.titleLabelAddQuote = new System.Windows.Forms.Label();
             this.btnGetQuote = new System.Windows.Forms.Button();
-            this.materialBox = new System.Windows.Forms.ComboBox();
-            this.rushBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.quoteBox = new System.Windows.Forms.GroupBox();
             this.quoteLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericWidthBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDepthBox)).BeginInit();
             this.deskBox.SuspendLayout();
@@ -158,6 +158,32 @@
             this.optionsBox.TabStop = false;
             this.optionsBox.Text = "Order Options";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Rush Order Options:";
+            // 
+            // rushBox
+            // 
+            this.rushBox.FormattingEnabled = true;
+            this.rushBox.Location = new System.Drawing.Point(141, 116);
+            this.rushBox.Name = "rushBox";
+            this.rushBox.Size = new System.Drawing.Size(121, 21);
+            this.rushBox.TabIndex = 8;
+            // 
+            // materialBox
+            // 
+            this.materialBox.FormattingEnabled = true;
+            this.materialBox.Location = new System.Drawing.Point(141, 72);
+            this.materialBox.Name = "materialBox";
+            this.materialBox.Size = new System.Drawing.Size(121, 21);
+            this.materialBox.TabIndex = 7;
+            // 
             // deskNumerLabel
             // 
             this.deskNumerLabel.AutoSize = true;
@@ -230,36 +256,11 @@
             this.btnGetQuote.TabIndex = 13;
             this.btnGetQuote.Text = "Get Quote";
             this.btnGetQuote.UseVisualStyleBackColor = true;
-            // 
-            // materialBox
-            // 
-            this.materialBox.FormattingEnabled = true;
-            this.materialBox.Location = new System.Drawing.Point(141, 72);
-            this.materialBox.Name = "materialBox";
-            this.materialBox.Size = new System.Drawing.Size(121, 21);
-            this.materialBox.TabIndex = 7;
-            // 
-            // rushBox
-            // 
-            this.rushBox.FormattingEnabled = true;
-            this.rushBox.Location = new System.Drawing.Point(141, 116);
-            this.rushBox.Name = "rushBox";
-            this.rushBox.Size = new System.Drawing.Size(121, 21);
-            this.rushBox.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 15);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Rush Order Options:";
+            this.btnGetQuote.Click += new System.EventHandler(this.btnGetQuote_Click);
             // 
             // quoteBox
             // 
-            this.quoteBox.Controls.Add(this.textBox2);
+            this.quoteBox.Controls.Add(this.label3);
             this.quoteBox.Controls.Add(this.quoteLabel);
             this.quoteBox.Location = new System.Drawing.Point(70, 293);
             this.quoteBox.Name = "quoteBox";
@@ -278,12 +279,12 @@
             this.quoteLabel.TabIndex = 11;
             this.quoteLabel.Text = "Final Quote:";
             // 
-            // textBox2
+            // label3
             // 
-            this.textBox2.Location = new System.Drawing.Point(246, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 20);
-            this.textBox2.TabIndex = 12;
+            this.label3.Location = new System.Drawing.Point(255, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(195, 15);
+            this.label3.TabIndex = 12;
             // 
             // AddQuote
             // 
@@ -335,7 +336,7 @@
         private System.Windows.Forms.ComboBox rushBox;
         private System.Windows.Forms.ComboBox materialBox;
         private System.Windows.Forms.GroupBox quoteBox;
-        private System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.Label quoteLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

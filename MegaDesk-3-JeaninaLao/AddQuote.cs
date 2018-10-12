@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_JeaninaLao
@@ -8,6 +10,10 @@ namespace MegaDesk_3_JeaninaLao
         public AddQuote()
         {
             InitializeComponent();
+
+            List<Desk.SurfaceMaterial> materials = Enum.GetValues(typeof(Desk.SurfaceMaterial)).Cast<Desk.SurfaceMaterial>().ToList();
+            materialBox.DataSource = materials;
+           
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -23,24 +29,10 @@ namespace MegaDesk_3_JeaninaLao
             mainMenu.Show();
         }
 
-        private void widthInput_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void btnGetQuote_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void widthInput_Validated(object sender, EventArgs e)
-        {
-
-        }
-
-        private void widthInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+            DeskQuote deskOrder = new DeskQuote();
+            deskOrder.calcQuote();
         }
     }
 }
