@@ -31,8 +31,48 @@ namespace MegaDesk_3_JeaninaLao
 
         private void btnGetQuote_Click(object sender, EventArgs e)
         {
+            Desk desk = new Desk();
             DeskQuote deskOrder = new DeskQuote();
-            deskOrder.calcQuote();
+
+            string customer = textBox1.Text;
+
+            desk.Width = (int)numericWidthBox.Value;
+            desk.Depth = (int)numericDepthBox.Value;
+            desk.NumberOfDrawers = (int)drawerNumberBox.Value;
+            string material = materialBox.SelectedItem.ToString();
+
+            if (material == "Laminate")
+            {
+                desk.DeskMaterial = Desk.SurfaceMaterial.Laminate;
+            }
+
+            else if (material == "Oak")
+            {
+                desk.DeskMaterial = Desk.SurfaceMaterial.Oak;
+            }
+
+            else if (material == "Rosewood")
+            {
+                desk.DeskMaterial = Desk.SurfaceMaterial.Rosewood;
+            }
+
+            else if (material == "Veneer")
+            {
+                desk.DeskMaterial = Desk.SurfaceMaterial.Veneer;
+            }
+
+            else if (material == "Pine")
+            {
+                desk.DeskMaterial = Desk.SurfaceMaterial.Pine;
+            }
+
+            deskOrder.Desk = desk;
+
+            string rush = rushBox.SelectedItem.ToString();
+
+            decimal totalQuote = deskOrder.calcQuote(rush);
+
+            label3.Text = "$" + totalQuote;
         }
     }
 }

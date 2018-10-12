@@ -43,11 +43,11 @@
             this.drawerNumberBox = new System.Windows.Forms.NumericUpDown();
             this.customerLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.titleLabelAddQuote = new System.Windows.Forms.Label();
             this.btnGetQuote = new System.Windows.Forms.Button();
             this.quoteBox = new System.Windows.Forms.GroupBox();
             this.quoteLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.titleLabelAddQuote = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericWidthBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDepthBox)).BeginInit();
             this.deskBox.SuspendLayout();
@@ -171,6 +171,11 @@
             // rushBox
             // 
             this.rushBox.FormattingEnabled = true;
+            this.rushBox.Items.AddRange(new object[] {
+            "3-Day Delivery",
+            "5-Day Delivery",
+            "7-Day Delivery",
+            "Standard (14 Days)"});
             this.rushBox.Location = new System.Drawing.Point(141, 116);
             this.rushBox.Name = "rushBox";
             this.rushBox.Size = new System.Drawing.Size(121, 21);
@@ -238,16 +243,6 @@
             this.textBox1.Size = new System.Drawing.Size(204, 20);
             this.textBox1.TabIndex = 11;
             // 
-            // titleLabelAddQuote
-            // 
-            this.titleLabelAddQuote.AutoSize = true;
-            this.titleLabelAddQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabelAddQuote.Location = new System.Drawing.Point(311, 9);
-            this.titleLabelAddQuote.Name = "titleLabelAddQuote";
-            this.titleLabelAddQuote.Size = new System.Drawing.Size(114, 25);
-            this.titleLabelAddQuote.TabIndex = 12;
-            this.titleLabelAddQuote.Text = "Add Quote";
-            // 
             // btnGetQuote
             // 
             this.btnGetQuote.Location = new System.Drawing.Point(226, 378);
@@ -285,6 +280,16 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(195, 15);
             this.label3.TabIndex = 12;
+            // 
+            // titleLabelAddQuote
+            // 
+            this.titleLabelAddQuote.AutoSize = true;
+            this.titleLabelAddQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabelAddQuote.Location = new System.Drawing.Point(324, 9);
+            this.titleLabelAddQuote.Name = "titleLabelAddQuote";
+            this.titleLabelAddQuote.Size = new System.Drawing.Size(86, 20);
+            this.titleLabelAddQuote.TabIndex = 12;
+            this.titleLabelAddQuote.Text = "Add Quote";
             // 
             // AddQuote
             // 
@@ -330,7 +335,6 @@
         private System.Windows.Forms.NumericUpDown drawerNumberBox;
         private System.Windows.Forms.Label customerLabel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label titleLabelAddQuote;
         private System.Windows.Forms.Button btnGetQuote;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox rushBox;
@@ -338,5 +342,6 @@
         private System.Windows.Forms.GroupBox quoteBox;
         public System.Windows.Forms.Label quoteLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label titleLabelAddQuote;
     }
 }
