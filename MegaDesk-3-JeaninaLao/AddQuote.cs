@@ -35,6 +35,7 @@ namespace MegaDesk_3_JeaninaLao
             DeskQuote deskOrder = new DeskQuote();
 
             string customer = textBox1.Text;
+            string rush;
 
             desk.Width = (int)numericWidthBox.Value;
             desk.Depth = (int)numericDepthBox.Value;
@@ -68,11 +69,21 @@ namespace MegaDesk_3_JeaninaLao
 
             deskOrder.Desk = desk;
 
-            string rush = rushBox.SelectedItem.ToString();
+            try
+            {
+                rush = rushBox.SelectedItem.ToString();
 
-            decimal totalQuote = deskOrder.calcQuote(rush);
+            } catch (NullReferenceException)
+            {
+                rush = "Standard (14 Days)";
+            }
+          
+
+            decimal totalQuote = deskOrder.CalcQuote(rush);
 
             label3.Text = "$" + totalQuote;
+
+            deskOrder.WriteQuote(customer, rush, totalQuote);
         }
     }
 }

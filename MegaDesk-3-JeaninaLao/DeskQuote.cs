@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MegaDesk_3_JeaninaLao
 {
@@ -24,7 +26,7 @@ namespace MegaDesk_3_JeaninaLao
         const decimal sevenDayPrice2 = 35.00M;
         const decimal sevenDayPrice3 = 40.00M;
 
-        public decimal calcQuote(string rushOrder)
+        public decimal CalcQuote(string rushOrder)
         {
             // find surface area of desk
             int surfaceArea = Desk.Depth * Desk.Width;
@@ -83,7 +85,36 @@ namespace MegaDesk_3_JeaninaLao
                     {
                         rushOrderPrice = threeDayPrice3;
                     }
-                    
+                    break;
+
+                case "5-Day Delivery":
+                    if (surfaceArea < 1000)
+                    {
+                        rushOrderPrice = fiveDayPrice;
+                    }
+                    else if (surfaceArea > 1000 && surfaceArea < 2000)
+                    {
+                        rushOrderPrice = fiveDayPrice2;
+                    }
+                    else if (surfaceArea > 2000)
+                    {
+                        rushOrderPrice = fiveDayPrice3;
+                    }
+                    break;
+
+                case "7-Day Delivery":
+                    if (surfaceArea < 1000)
+                    {
+                        rushOrderPrice = sevenDayPrice;
+                    }
+                    else if (surfaceArea > 1000 && surfaceArea < 2000)
+                    {
+                        rushOrderPrice = sevenDayPrice2;
+                    }
+                    else if (surfaceArea > 2000)
+                    {
+                        rushOrderPrice = sevenDayPrice3;
+                    }
                     break;
 
                 default:
@@ -93,6 +124,15 @@ namespace MegaDesk_3_JeaninaLao
 
             decimal quote = basePrice + surfaceAreaRate + drawerNumberRate + materialPrice + rushOrderPrice;
             return quote;
+        }
+
+        public void WriteQuote(string customer, string rushOption, decimal finalQuote)
+        {
+            string quoteDate = DateTime.Now.ToString("MM/dd/yyyy");
+            using (StreamWriter quoteFile = new StreamWriter("quotes.txt"))
+            {
+                quoteFile.WriteLine(customer + ',' + Desk.Width + ',' + Desk.Depth + ',' + Desk.NumberOfDrawers + ',' + Desk.DeskMaterial + ',' + rushOption + ',' + "$" + finalQuote + ',' + quoteDate);
+            }
         }
     }
 }
