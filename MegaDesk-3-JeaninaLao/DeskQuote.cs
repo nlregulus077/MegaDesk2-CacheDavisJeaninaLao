@@ -129,7 +129,7 @@ namespace MegaDesk_3_JeaninaLao
         public void WriteQuote(string customer, string rushOption, decimal finalQuote)
         {
             string quoteDate = DateTime.Now.ToString("MM/dd/yyyy");
-            using (StreamWriter quoteFile = new StreamWriter("quotes.txt"))
+            using (StreamWriter quoteFile = new StreamWriter(@"quotes.txt", append: true))
             {
                 quoteFile.WriteLine(customer + ',' + Desk.Width + ',' + Desk.Depth + ',' + Desk.NumberOfDrawers + ',' + Desk.DeskMaterial + ',' + rushOption + ',' + "$" + finalQuote + ',' + quoteDate);
             }

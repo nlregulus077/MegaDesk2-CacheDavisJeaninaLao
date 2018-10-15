@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_JeaninaLao
@@ -8,6 +10,7 @@ namespace MegaDesk_3_JeaninaLao
         public ViewAllQuotes()
         {
             InitializeComponent();
+            ShowQuotes();
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -21,6 +24,21 @@ namespace MegaDesk_3_JeaninaLao
         {
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
+        }
+
+        public void ShowQuotes()
+        {
+            using (StreamReader quoteFile = new StreamReader("quotes.txt"))
+            {
+                string[] quoteLines = File.ReadAllLines(@"quotes.txt");
+                
+                foreach (string quoteline in quoteLines)
+                {
+                    string[] element = quoteline.Split(new char[] { ',' });
+                    gridQuotes.Rows.Add(element);
+                }
+                
+            }
         }
     }
 }
