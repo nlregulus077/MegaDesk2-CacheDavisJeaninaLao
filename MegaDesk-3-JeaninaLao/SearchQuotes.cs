@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_JeaninaLao
@@ -8,6 +9,7 @@ namespace MegaDesk_3_JeaninaLao
         public SearchQuotes()
         {
             InitializeComponent();
+            ShowQuotes();
         }
 
         private void MainMenuButton_Click(object sender, EventArgs e)
@@ -21,6 +23,48 @@ namespace MegaDesk_3_JeaninaLao
         {
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
+        }
+
+        public void ShowQuotes()
+        {
+            using (StreamReader quoteFile = new StreamReader("quotes.txt"))
+            {
+                string[] quoteLines = File.ReadAllLines(@"quotes.txt");
+
+                foreach (string quoteline in quoteLines)
+                {
+                    string[] element = quoteline.Split(new char[] { ',' });
+                    gridQuotes.Rows.Add(element);
+                }
+
+            }
+        }
+
+        public void ShowQuotes2(string search)
+        {
+            using (StreamReader quoteFile = new StreamReader("quotes.txt"))
+            {
+                string[] quoteLines = File.ReadAllLines(@"quotes.txt");
+
+                
+                    foreach (string quoteline in quoteLines)
+                    {
+                        if (quoteline.Contains(search))
+                        {
+                            string[] element = quoteline.Split(new char[] { ',' });
+                            gridQuotes.Rows.Add(element);
+                        }
+                        
+                    }
+
+              
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string searchTerm = searchBox.SelectedItem.ToString();
+            ShowQuotes2(searchTerm);
         }
     }
 }
