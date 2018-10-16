@@ -46,7 +46,7 @@ namespace MegaDesk_3_JeaninaLao
             {
                 string[] quoteLines = File.ReadAllLines(@"quotes.txt");
 
-                
+                gridQuotes.Rows.Clear();
                     foreach (string quoteline in quoteLines)
                     {
                         if (quoteline.Contains(search))
