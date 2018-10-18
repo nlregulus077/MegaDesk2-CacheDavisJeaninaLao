@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_3_JeaninaLao
 {
     class DeskQuote
     {
         public Desk Desk { get; set; }
+        public string CustomerName { get; set; }
+        public string RushOption { get; set; }
+        public decimal FinalQuote { get; set; }
 
         const decimal basePrice = 200.00M;
         const decimal drawerPrice = 50.00M;
@@ -133,6 +137,14 @@ namespace MegaDesk_3_JeaninaLao
             {
                 quoteFile.WriteLine(customer + ',' + Desk.Width + ',' + Desk.Depth + ',' + Desk.NumberOfDrawers + ',' + Desk.DeskMaterial + ',' + rushOption + ',' + "$" + finalQuote + ',' + quoteDate);
             }
+        }
+
+        public void WriteQuote(DeskQuote deskQuote)
+        {
+            var quotes = @"quotes.json";
+            var list = JsonConvert.DeserializeObject<List<DeskQuote>>(@"quotes.json");
+            list.Add(deskQuote);
+            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
         }
     }
 }
