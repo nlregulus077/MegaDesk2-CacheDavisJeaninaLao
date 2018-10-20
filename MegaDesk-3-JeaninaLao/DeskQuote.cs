@@ -11,6 +11,7 @@ namespace MegaDesk_3_JeaninaLao
         public string CustomerName { get; set; }
         public string RushOption { get; set; }
         public decimal FinalQuote { get; set; }
+        public string QuoteDate { get; set; }
 
         const decimal basePrice = 200.00M;
         const decimal drawerPrice = 50.00M;
@@ -20,6 +21,8 @@ namespace MegaDesk_3_JeaninaLao
         const decimal pinePrice = 50.00M;
         const decimal rosewoodPrice = 300.00M;
         const decimal veneerPrice = 200.00M;
+
+        // shipping from text file
         const decimal threeDayPrice = 60.00M;
         const decimal threeDayPrice2 = 70.00M;
         const decimal threeDayPrice3 = 80.00M;
@@ -37,6 +40,8 @@ namespace MegaDesk_3_JeaninaLao
             decimal surfaceAreaRate = 0;
             decimal materialPrice = 0;
             decimal rushOrderPrice = 0;
+
+            // read rushOrdertxt and place into two dimensional array
 
             // get surface area rate
             if (surfaceArea > 1000)
@@ -130,9 +135,9 @@ namespace MegaDesk_3_JeaninaLao
             return quote;
         }
 
-        public void WriteQuote(string customer, string rushOption, decimal finalQuote)
+        public void WriteQuote(string customer, string rushOption, decimal finalQuote, string quoteDate)
         {
-            string quoteDate = DateTime.Now.ToString("MM/dd/yyyy");
+            
             using (StreamWriter quoteFile = new StreamWriter(@"quotes.txt", append: true))
             {
                 quoteFile.WriteLine(customer + ',' + Desk.Width + ',' + Desk.Depth + ',' + Desk.NumberOfDrawers + ',' + Desk.DeskMaterial + ',' + rushOption + ',' + "$" + finalQuote + ',' + quoteDate);
@@ -141,10 +146,33 @@ namespace MegaDesk_3_JeaninaLao
 
         public void WriteQuote(DeskQuote deskQuote)
         {
-            var quotes = @"quotes.json";
-            var list = JsonConvert.DeserializeObject<List<DeskQuote>>(@"quotes.json");
-            list.Add(deskQuote);
-            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+
+           
+            var quotesFile = @"quotes.json";
+            var deskQuotes = new List<DeskQuote>();
+
+            if (File.Exists(quotesFile))
+            {
+                using (StreamReader reader = new StreamReader(quotesFile))
+                {
+                    string quotes = reader.ReadToEnd();
+                    if (quotes.Length > 0)
+                    {
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
+                    deskQuotes.Add(deskQuote);
+                }
+               
+            }
+            else
+            {
+                deskQuotes.Add(deskQuote);
+            }
+
+            var convertedJson = JsonConvert.SerializeObject(deskQuotes, Formatting.Indented);
+
+            File.WriteAllText(quotesFile, convertedJson);
+            
         }
     }
 }

@@ -76,15 +76,16 @@ namespace MegaDesk_3_JeaninaLao
             {
                 deskOrder.RushOption = "Standard (14 Days)";
             }
-          
+            
+            deskOrder.QuoteDate = DateTime.Now.ToString("MM/dd/yyyy");
 
             deskOrder.FinalQuote = deskOrder.CalcQuote(deskOrder.RushOption);
 
             label3.Text = "$" + deskOrder.FinalQuote;
 
-            // deskOrder.WriteQuote(customer, rush, totalQuote);
+            deskOrder.WriteQuote(deskOrder.CustomerName, deskOrder.RushOption, deskOrder.FinalQuote, deskOrder.QuoteDate);
 
-           // deskOrder.WriteQuote(deskOrder);
+            deskOrder.WriteQuote(deskOrder);
         }
     }
 }
