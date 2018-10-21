@@ -28,7 +28,7 @@ namespace MegaDesk_3_JeaninaLao
             decimal[,] priceTable = new decimal[3, 3];
             using (StreamReader rushOrderFile = new StreamReader(@"rushOrderPrices.txt"))
             {
-
+                // Thank you CodeGuru for giving us a chance TT^TT
                 for (int row = 0; row < 3; row++)
                 {
                     for (int column = 0; column < 3; column++)
