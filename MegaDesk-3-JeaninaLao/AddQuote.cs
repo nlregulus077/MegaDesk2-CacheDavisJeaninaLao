@@ -79,7 +79,7 @@ namespace MegaDesk_3_JeaninaLao
             
             deskOrder.QuoteDate = DateTime.Now.ToString("MM/dd/yyyy");
 
-            deskOrder.FinalQuote = deskOrder.CalcQuote(deskOrder.RushOption);
+            deskOrder.FinalQuote = deskOrder.CalcQuote();
 
             label3.Text = "$" + deskOrder.FinalQuote;
 

@@ -22,18 +22,79 @@ namespace MegaDesk_3_JeaninaLao
         const decimal rosewoodPrice = 300.00M;
         const decimal veneerPrice = 200.00M;
 
-        // shipping from text file
-        const decimal threeDayPrice = 60.00M;
-        const decimal threeDayPrice2 = 70.00M;
-        const decimal threeDayPrice3 = 80.00M;
-        const decimal fiveDayPrice = 40.00M;
-        const decimal fiveDayPrice2 = 50.00M;
-        const decimal fiveDayPrice3 = 60.00M;
-        const decimal sevenDayPrice = 30.00M;
-        const decimal sevenDayPrice2 = 35.00M;
-        const decimal sevenDayPrice3 = 40.00M;
+        public decimal GetRushOrder (string rushOrder, int deskSurfaceArea)
+        {
+            decimal rushOrderRate = 0;
+            decimal[,] priceTable = new decimal[3, 3];
+            using (StreamReader rushOrderFile = new StreamReader(@"rushOrderPrices.txt"))
+            {
 
-        public decimal CalcQuote(string rushOrder)
+                for (int row = 0; row < 3; row++)
+                {
+                    for (int column = 0; column < 3; column++)
+                    {
+                        Decimal.TryParse(rushOrderFile.ReadLine(), out priceTable[row,column]);
+                    }
+                }
+
+            }
+
+            switch (rushOrder)
+            {
+                case "3-Day Delivery":
+                    if (deskSurfaceArea < 1000)
+                    {
+                        rushOrderRate = priceTable[0,0];
+                    }
+                    else if (deskSurfaceArea > 1000 && deskSurfaceArea < 2000)
+                    {
+                        rushOrderRate = priceTable[0,1];
+                    }
+                    else if (deskSurfaceArea > 2000)
+                    {
+                        rushOrderRate = priceTable[0,2];
+                    }
+                    break;
+
+                case "5-Day Delivery":
+                    if (deskSurfaceArea < 1000)
+                    {
+                        rushOrderRate = priceTable[1, 0];
+                    }
+                    else if (deskSurfaceArea > 1000 && deskSurfaceArea < 2000)
+                    {
+                        rushOrderRate = priceTable[1,1];
+                    }
+                    else if (deskSurfaceArea > 2000)
+                    {
+                        rushOrderRate = priceTable[1,2];
+                    }
+                    break;
+
+                case "7-Day Delivery":
+                    if (deskSurfaceArea < 1000)
+                    {
+                        rushOrderRate = priceTable[2,0];
+                    }
+                    else if (deskSurfaceArea > 1000 && deskSurfaceArea < 2000)
+                    {
+                        rushOrderRate = priceTable[2,1];
+                    }
+                    else if (deskSurfaceArea > 2000)
+                    {
+                        rushOrderRate = priceTable[2,2];
+                    }
+                    break;
+
+                default:
+                    rushOrderRate = 0;
+                    break;
+            }
+            return rushOrderRate;
+
+        }
+
+        public decimal CalcQuote()
         {
             // find surface area of desk
             int surfaceArea = Desk.Depth * Desk.Width;
@@ -79,57 +140,8 @@ namespace MegaDesk_3_JeaninaLao
             }
 
             // get rush order rate
-            switch (rushOrder)
-            {
-                case "3-Day Delivery" :
-                    if (surfaceArea < 1000)
-                    {
-                        rushOrderPrice = threeDayPrice;
-                    }
-                    else if (surfaceArea > 1000 && surfaceArea < 2000)
-                    {
-                        rushOrderPrice = threeDayPrice2;
-                    }
-                    else if (surfaceArea > 2000)
-                    {
-                        rushOrderPrice = threeDayPrice3;
-                    }
-                    break;
-
-                case "5-Day Delivery":
-                    if (surfaceArea < 1000)
-                    {
-                        rushOrderPrice = fiveDayPrice;
-                    }
-                    else if (surfaceArea > 1000 && surfaceArea < 2000)
-                    {
-                        rushOrderPrice = fiveDayPrice2;
-                    }
-                    else if (surfaceArea > 2000)
-                    {
-                        rushOrderPrice = fiveDayPrice3;
-                    }
-                    break;
-
-                case "7-Day Delivery":
-                    if (surfaceArea < 1000)
-                    {
-                        rushOrderPrice = sevenDayPrice;
-                    }
-                    else if (surfaceArea > 1000 && surfaceArea < 2000)
-                    {
-                        rushOrderPrice = sevenDayPrice2;
-                    }
-                    else if (surfaceArea > 2000)
-                    {
-                        rushOrderPrice = sevenDayPrice3;
-                    }
-                    break;
-
-                default:
-                    rushOrderPrice = 0;
-                    break;
-            }
+            rushOrderPrice = GetRushOrder(RushOption, surfaceArea);
+           
 
             decimal quote = basePrice + surfaceAreaRate + drawerNumberRate + materialPrice + rushOrderPrice;
             return quote;
