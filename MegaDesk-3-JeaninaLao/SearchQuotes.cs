@@ -27,9 +27,9 @@ namespace MegaDesk_3_JeaninaLao
 
         public void ShowQuotes()
         {
-            using (StreamReader quoteFile = new StreamReader("quotes.txt"))
+            using (StreamReader quoteFile = new StreamReader("quotes.json"))
             {
-                string[] quoteLines = File.ReadAllLines(@"quotes.txt");
+                string[] quoteLines = File.ReadAllLines(@"quotes.json");
 
                 foreach (string quoteline in quoteLines)
                 {
@@ -42,9 +42,9 @@ namespace MegaDesk_3_JeaninaLao
 
         public void ShowQuotes2(string search)
         {
-            using (StreamReader quoteFile = new StreamReader("quotes.txt"))
+            using (StreamReader quoteFile = new StreamReader("quotes.json"))
             {
-                string[] quoteLines = File.ReadAllLines(@"quotes.txt");
+                string[] quoteLines = File.ReadAllLines(@"quotes.json");
 
                 gridQuotes.Rows.Clear();
                     foreach (string quoteline in quoteLines)
