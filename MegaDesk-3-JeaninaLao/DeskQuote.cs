@@ -182,7 +182,7 @@ namespace MegaDesk_3_JeaninaLao
                 deskQuotes.Add(deskQuote);
             }
 
-            var convertedJson = JsonConvert.SerializeObject(deskQuotes, Formatting.Indented);
+            var convertedJson = JsonConvert.SerializeObject(deskQuotes, Newtonsoft.Json.Formatting.Indented);
 
             File.WriteAllText(quotesFile, convertedJson);
             
