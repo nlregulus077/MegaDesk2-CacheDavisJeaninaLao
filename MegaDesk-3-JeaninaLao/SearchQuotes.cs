@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_JeaninaLao
@@ -27,44 +30,57 @@ namespace MegaDesk_3_JeaninaLao
 
         public void ShowQuotes()
         {
-            using (StreamReader quoteFile = new StreamReader("quotes.json"))
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            using (StreamReader quoteFile = new StreamReader(@"quotes.json"))
             {
-                string[] quoteLines = File.ReadAllLines(@"quotes.json");
 
-                foreach (string quoteline in quoteLines)
+                string quotes = quoteFile.ReadToEnd();
+                deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                gridQuotes.DataSource = deskQuotes.Select(d => new
                 {
-                    string[] element = quoteline.Split(new char[] { ',' });
-                    gridQuotes.Rows.Add(element);
-                }
+                    Name = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    Material = d.Desk.DeskMaterial,
+                    DeliveryOption = d.RushOption,
+                    Quote = d.FinalQuote,
+                    Date = d.QuoteDate
+                }).ToList();
 
             }
         }
 
-        public void ShowQuotes2(string search)
+        public void SearchForQuotes(string search)
         {
-            using (StreamReader quoteFile = new StreamReader("quotes.json"))
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            using (StreamReader quoteFile = new StreamReader(@"quotes.json"))
             {
-                string[] quoteLines = File.ReadAllLines(@"quotes.json");
 
-                gridQuotes.Rows.Clear();
-                    foreach (string quoteline in quoteLines)
-                    {
-                        if (quoteline.Contains(search))
-                        {
-                            string[] element = quoteline.Split(new char[] { ',' });
-                            gridQuotes.Rows.Add(element);
-                        }
-                        
-                    }
+                string quotes = quoteFile.ReadToEnd();
+                deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
 
-              
+                gridQuotes.DataSource = deskQuotes.Select(d => new
+                {
+                    Name = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    Material = d.Desk.DeskMaterial,
+                    DeliveryOption = d.RushOption,
+                    Quote = d.FinalQuote,
+                    Date = d.QuoteDate
+                }).Where(q =>  q.Material.ToString() == search)
+                .ToList();
+
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string searchTerm = searchBox.SelectedItem.ToString();
-            ShowQuotes2(searchTerm);
+            SearchForQuotes(searchTerm);
         }
     }
 }

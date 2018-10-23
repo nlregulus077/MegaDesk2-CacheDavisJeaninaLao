@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MegaDesk_3_JeaninaLao
@@ -28,16 +30,25 @@ namespace MegaDesk_3_JeaninaLao
 
         public void ShowQuotes()
         {
-            using (StreamReader quoteFile = new StreamReader("quotes.json"))
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            using (StreamReader quoteFile = new StreamReader(@"quotes.json"))
             {
-                string[] quoteLines = File.ReadAllLines(@"quotes.json");
-                
-                foreach (string quoteline in quoteLines)
+
+                string quotes = quoteFile.ReadToEnd();
+                deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                gridQuotes.DataSource = deskQuotes.Select(d => new
                 {
-                    string[] element = quoteline.Split(new char[] { ',' });
-                    gridQuotes.Rows.Add(element);
-                }
-                
+                    Name = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    Drawers = d.Desk.NumberOfDrawers,
+                    Material = d.Desk.DeskMaterial,
+                    DeliveryOption = d.RushOption,
+                    Quote = d.FinalQuote,
+                    Date = d.QuoteDate
+                }).ToList(); 
+
             }
         }
     }
